@@ -8,10 +8,7 @@ emoticons_page_url = 'https://www.hipchat.com/emoticons'
 
 session = requests.Session()
 response = session.get(emoticons_page_url)
-html = response.text
-
-soup = BeautifulSoup(html)
-links = soup.find_all('img')
+soup = BeautifulSoup(response.text)
 
 for div in soup.find_all('div', 'emoticon-block'):
   emoji = div.text.strip()[1:-1]
